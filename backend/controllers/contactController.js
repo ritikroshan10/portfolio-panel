@@ -1,6 +1,6 @@
 const Contact = require("../models/contactModel");
 
-// GET contact data
+// GET contact (frontend)
 exports.getContact = async (req, res) => {
   try {
     const contact = await Contact.findOne();
@@ -10,36 +10,39 @@ exports.getContact = async (req, res) => {
   }
 };
 
-// CREATE contact data
+// CREATE contact (admin)
 exports.createContact = async (req, res) => {
   try {
-    const existing = await Contact.findOne();
-    if (existing) return res.status(400).json({ error: "Contact info already exists" });
+    const { phone, email, linkedin, location, introText } = req.body;
 
-    const { phone, email, linkedin, location } = req.body;
-    const newContact = new Contact({ phone, email, linkedin, location });
+    // Only one contact record allowed
+    const existing = await Contact.findOne();
+    if (existing) return res.status(400).json({ error: "Contact already exists" });
+
+    const newContact = new Contact({ phone, email, linkedin, location, introText });
     await newContact.save();
     res.status(201).json(newContact);
   } catch (err) {
-    res.status(500).json({ error: "Failed to create contact info" });
+    res.status(500).json({ error: "Failed to create contact" });
   }
 };
 
-// UPDATE contact data
+// UPDATE contact (admin)
 exports.updateContact = async (req, res) => {
   try {
+    const { phone, email, linkedin, location, introText } = req.body;
     const contact = await Contact.findOne();
-    if (!contact) return res.status(404).json({ error: "Contact info not found" });
+    if (!contact) return res.status(404).json({ error: "Contact not found" });
 
-    const { phone, email, linkedin, location } = req.body;
     contact.phone = phone;
     contact.email = email;
     contact.linkedin = linkedin;
     contact.location = location;
-    await contact.save();
+    contact.introText = introText;
 
+    await contact.save();
     res.json(contact);
   } catch (err) {
-    res.status(500).json({ error: "Failed to update contact info" });
+    res.status(500).json({ error: "Failed to update contact" });
   }
 };

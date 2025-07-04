@@ -5,7 +5,9 @@ const contactSchema = new mongoose.Schema({
   email: String,
   linkedin: String,
   location: String,
+  introText: String, 
 });
 
 const Contact = mongoose.model("Contact", contactSchema);
+
 module.exports = Contact;
