@@ -1,8 +1,8 @@
-const { Project} = require("../models/Project");
+const { Project } = require("../models/Project");
 const fs = require("fs");
 const path = require("path");
 
-// GET all projects
+// Controller to fetch all projects
 exports.getProjects = async (req, res) => {
   try {
     const projects = await Project.find();
@@ -12,7 +12,7 @@ exports.getProjects = async (req, res) => {
   }
 };
 
-// GET single project
+// Controller to fetch a single project by ID
 exports.getProjectById = async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
@@ -22,12 +22,14 @@ exports.getProjectById = async (req, res) => {
   }
 };
 
-// CREATE new project
+// CREATE a new project
 exports.createProject = async (req, res) => {
   try {
+    // Check if file is uploaded
     const { title, description, github, live, githubIcon, liveIcon } = req.body;
     const image = req.file?.filename || "";
 
+    // Validate required fields
     const project = new Project({
       title,
       description,
@@ -45,10 +47,12 @@ exports.createProject = async (req, res) => {
   }
 };
 
-// UPDATE a project
+// UPDATE an existing project
 exports.updateProject = async (req, res) => {
   try {
+    // Check if file is uploaded
     const { title, description, github, live, githubIcon, liveIcon } = req.body;
+    // Validate required fields
     const project = await Project.findById(req.params.id);
     if (!project) return res.status(404).json({ error: "Project not found" });
 
@@ -58,12 +62,14 @@ exports.updateProject = async (req, res) => {
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
     }
 
+    // Update project fields
     project.title = title;
     project.description = description;
     project.github = github;
     project.live = live;
     project.githubIcon = githubIcon;
     project.liveIcon = liveIcon;
+    // If a new image file is uploaded, update the image field with new filename
     if (req.file) project.image = req.file.filename;
 
     await project.save();
