@@ -7,6 +7,7 @@ import AddProject from "./pages/projects/AddProject";
 import EditProject from "./pages/projects/EditProject";
 import AddProjectMeta from "./pages/projects/AddProjectMeta";
 import EditProjectMeta from "./pages/projects/EditProjectMeta";
+import Contact from "./pages/contact/Contact";
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/edit-project/:id" element={<EditProject />} />
         <Route path="/add-project-meta" element={<AddProjectMeta />} />
         <Route path="/edit-project-meta" element={<EditProjectMeta />} />
+        <Route path="/contacts" element={<Contact />} />
 
       </Routes>
     </Router>

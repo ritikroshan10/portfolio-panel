@@ -6,6 +6,7 @@ require("dotenv").config();
 const projectRoutes = require("./routes/projectRoutes");
 const projectMetaRoutes = require("./routes/projectMetaRoutes");
 const authRoutes = require("./routes/authRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use("/uploads", express.static("uploads")); // For image access
 app.use("/api/projects", projectRoutes);
 app.use("/api/project-meta", projectMetaRoutes);
 app.use("/api", authRoutes);
+app.use("/api/contact", contactRoutes);
 
 
 
