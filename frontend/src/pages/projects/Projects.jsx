@@ -107,7 +107,7 @@ const Projects = () => {
                       <img
                         src={`http://localhost:5000/uploads/${image}`}
                         alt={title}
-                        className="h-full object-contain p-2"
+                        className="h-full object-full p-2"
                       />
                     </div>
 
