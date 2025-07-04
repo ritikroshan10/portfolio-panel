@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaTools,
+  FaFolderOpen
 } from "react-icons/fa";
 
 const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
@@ -31,7 +32,7 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
           onClick={() => setIsMobileMenuOpen(false)}
           className="flex items-center gap-3 hover:text-blue-700"
         >
-          <FaTachometerAlt /> Projects
+          <FaFolderOpen /> Projects
         </NavLink>
 
 
