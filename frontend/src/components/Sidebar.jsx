@@ -3,7 +3,8 @@ import {
   FaTachometerAlt,
   FaTools,
   FaFolderOpen,
-  FaGlobe
+  FaGlobe,
+  FaUser
 } from "react-icons/fa";
 
 const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
@@ -42,6 +43,14 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
           className="flex items-center gap-3 hover:text-blue-700"
         >
           <FaGlobe /> Contacts
+        </NavLink>
+
+        <NavLink
+          to="/about"
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="flex items-center gap-3 hover:text-blue-700"
+        >
+          <FaUser /> About Us
         </NavLink>
 
 
