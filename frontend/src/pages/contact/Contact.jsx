@@ -3,13 +3,15 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
 import axios from "axios";
-import { toast } from "react-toastify";
+
 
 const Contact = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // State to hold contact data
   const [contact, setContact] = useState(null);
   const navigate = useNavigate();
 
+  // Fetch contact data from the backend when component mounts
   useEffect(() => {
     axios.get("http://localhost:5000/api/contact")
       .then((res) => setContact(res.data))
@@ -18,6 +20,7 @@ const Contact = () => {
 
   return (
     <div className="flex min-h-screen bg-indigo-50">
+      
       <Sidebar
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}

@@ -11,6 +11,11 @@ import Contact from "./pages/contact/Contact";
 import AddContact from "./pages/contact/AddContact";
 import EditContact from "./pages/contact/EditContact";
 import About from "./pages/about/About";
+import AddEducation from "./pages/about/AddEducation";
+import EditEducation from "./pages/about/EditEducation";
+import AddSkill from "./pages/about/AddSkill";
+import AddTraining from "./pages/about/AddTraining";
+import EditTraining from "./pages/about/EditTraining";
 
 
 
@@ -35,6 +40,11 @@ function App() {
         <Route path="/add-contact" element={<AddContact />} />
         <Route path="/edit-contact" element={<EditContact />} />
         <Route path="/about" element={<About />} />
+        <Route path="/add-education" element={<AddEducation />} />
+        <Route path="/edit-education/:id" element={<EditEducation />} />
+        <Route path="/add-skill" element={<AddSkill />} />
+        <Route path="/edit-training/:id" element={<EditTraining />} />
+        <Route path="/add-training" element={<AddTraining />} />
 
       </Routes>
     </Router>

@@ -7,6 +7,9 @@ const projectRoutes = require("./routes/projectRoutes");
 const projectMetaRoutes = require("./routes/projectMetaRoutes");
 const authRoutes = require("./routes/authRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+const educationRoutes = require('./routes/educationRoutes');
+const skillRoutes = require('./routes/skillRoutes');
+const trainingRoutes = require('./routes/trainingRoutes');
 
 
 
@@ -20,6 +23,9 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/project-meta", projectMetaRoutes);
 app.use("/api", authRoutes);
 app.use("/api/contact", contactRoutes);
+app.use('/api/education', educationRoutes);
+app.use('/api/skills', skillRoutes);
+app.use('/api/training', trainingRoutes);
 
 
 
