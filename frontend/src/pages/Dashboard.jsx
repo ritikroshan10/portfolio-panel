@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 const Dashboard = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
   return (
     <div className="flex min-h-screen bg-indigo-50">
       <Sidebar isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />

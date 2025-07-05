@@ -16,6 +16,7 @@ import EditEducation from "./pages/about/EditEducation";
 import AddSkill from "./pages/about/AddSkill";
 import AddTraining from "./pages/about/AddTraining";
 import EditTraining from "./pages/about/EditTraining";
+import Home from "./pages/home/Home";
 
 
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/add-skill" element={<AddSkill />} />
         <Route path="/edit-training/:id" element={<EditTraining />} />
         <Route path="/add-training" element={<AddTraining />} />
+        <Route path="/home" element={<Home />} />
 
       </Routes>
     </Router>

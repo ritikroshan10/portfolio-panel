@@ -10,7 +10,7 @@ const contactRoutes = require("./routes/contactRoutes");
 const educationRoutes = require('./routes/educationRoutes');
 const skillRoutes = require('./routes/skillRoutes');
 const trainingRoutes = require('./routes/trainingRoutes');
-
+const profileImgRoutes = require('./routes/profileImgRoutes');
 
 
 const app = express();
@@ -26,7 +26,7 @@ app.use("/api/contact", contactRoutes);
 app.use('/api/education', educationRoutes);
 app.use('/api/skills', skillRoutes);
 app.use('/api/training', trainingRoutes);
-
+app.use('/api/profileimg', profileImgRoutes);
 
 
 // MongoDB Connect
@@ -35,5 +35,5 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("DB Error:", err));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
