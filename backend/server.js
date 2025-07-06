@@ -11,6 +11,7 @@ const educationRoutes = require('./routes/educationRoutes');
 const skillRoutes = require('./routes/skillRoutes');
 const trainingRoutes = require('./routes/trainingRoutes');
 const profileImgRoutes = require('./routes/profileImgRoutes');
+const homeContentRoutes = require("./routes/homeContentRoutes");
 
 
 const app = express();
@@ -27,6 +28,8 @@ app.use('/api/education', educationRoutes);
 app.use('/api/skills', skillRoutes);
 app.use('/api/training', trainingRoutes);
 app.use('/api/profileimg', profileImgRoutes);
+app.use("/api/homecontent", homeContentRoutes);
+
 
 
 // MongoDB Connect
