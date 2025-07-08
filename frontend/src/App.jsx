@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
-
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/projects/Projects";
 import AddProject from "./pages/projects/AddProject";
@@ -17,8 +16,7 @@ import AddSkill from "./pages/about/AddSkill";
 import AddTraining from "./pages/about/AddTraining";
 import EditTraining from "./pages/about/EditTraining";
 import Home from "./pages/home/Home";
-
-
+import AddHomeSkill from "./pages/home/AddHomeSkill";
 
 function App() {
   return (
@@ -26,10 +24,8 @@ function App() {
       <Routes>
         {/* Public route: redirect / to /login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
-
         {/* Login is public */}
         <Route path="/login" element={<Login />} />
-
         {/* ✅ Protected routes start here */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/projects" element={<Projects />} />
@@ -47,7 +43,7 @@ function App() {
         <Route path="/edit-training/:id" element={<EditTraining />} />
         <Route path="/add-training" element={<AddTraining />} />
         <Route path="/home" element={<Home />} />
-
+        <Route path="/add-home-skill" element={<AddHomeSkill />} />
       </Routes>
     </Router>
   );

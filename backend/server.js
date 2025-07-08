@@ -12,9 +12,12 @@ const skillRoutes = require('./routes/skillRoutes');
 const trainingRoutes = require('./routes/trainingRoutes');
 const profileImgRoutes = require('./routes/profileImgRoutes');
 const homeContentRoutes = require("./routes/homeContentRoutes");
+const homeSkillRoutes = require("./routes/homeSkillRoutes");
 
 
+// Express App Setup
 const app = express();
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads")); // For image access
@@ -29,8 +32,7 @@ app.use('/api/skills', skillRoutes);
 app.use('/api/training', trainingRoutes);
 app.use('/api/profileimg', profileImgRoutes);
 app.use("/api/homecontent", homeContentRoutes);
-
-
+app.use("/api/homeskills", homeSkillRoutes);
 
 // MongoDB Connect
 mongoose

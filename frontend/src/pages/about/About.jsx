@@ -6,17 +6,23 @@ import axios from "axios";
 import { getDynamicIcon } from "../../utils/dynamicIcon";
 
 const About = () => {
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // State to hold education
   const [educations, setEducations] = useState([]);
+  // State to hold skills
   const [skills, setSkills] = useState([]);
+  // State to hold trainings
   const [trainings, setTrainings] = useState([]);
 
+  // Fetch data on component mount
   useEffect(() => {
     fetchEducation();
     fetchSkills();
     fetchTrainings();
   }, []);
 
+  // Fetch education
   const fetchEducation = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/education");
@@ -26,6 +32,7 @@ const About = () => {
     }
   };
 
+  // Fetch skills
   const fetchSkills = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/skills");
@@ -35,6 +42,7 @@ const About = () => {
     }
   };
 
+  // Fetch trainings
   const fetchTrainings = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/training");
@@ -44,6 +52,7 @@ const About = () => {
     }
   };
 
+  // Delete handlers for education
   const handleDeleteEducation = async (id) => {
     if (window.confirm("Are you sure you want to delete this education entry?")) {
       await axios.delete(`http://localhost:5000/api/education/${id}`);
@@ -51,6 +60,7 @@ const About = () => {
     }
   };
 
+  // Delete handlers for skills
   const handleDeleteSkill = async (id) => {
     if (window.confirm("Are you sure you want to delete this skill?")) {
       await axios.delete(`http://localhost:5000/api/skills/${id}`);
@@ -58,6 +68,7 @@ const About = () => {
     }
   };
 
+  // Delete handlers for trainings
   const handleDeleteTraining = async (id) => {
     if (window.confirm("Are you sure you want to delete this training?")) {
       await axios.delete(`http://localhost:5000/api/training/${id}`);
@@ -66,14 +77,19 @@ const About = () => {
   };
 
   return (
+
     <div className="flex min-h-screen bg-indigo-50">
+
       <Sidebar isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
+
       <div className="flex flex-col flex-1 md:ml-64">
+
         <Navbar isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
 
         <main className="flex-1 p-4 md:p-6 bg-gradient-to-b from-indigo-100 via-blue-50 to-indigo-100">
 
           {/* ===================== Education ===================== */}
+
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-3xl font-semibold text-indigo-900">Education</h2>
             <Link to="/add-education" className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
@@ -84,7 +100,7 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {educations.map((edu) => (
               <div key={edu._id} className="bg-white p-5 rounded-xl border border-gray-300 shadow-md">
-                <h3 className="text-lg font-semibold text-indigo-700 mb-1">{edu.degree}</h3>
+                <h3 className="text-lg font-semibold text-[#1ED1BF] mb-1">{edu.degree}</h3>
                 <p className="text-sm text-gray-700 mb-1">{edu.institute}</p>
                 <p className="text-sm text-gray-600">📆 {edu.duration}</p>
                 <p className="text-sm text-gray-600">📊 {edu.marks}</p>
@@ -103,6 +119,7 @@ const About = () => {
           </div>
 
           {/* ===================== Skills ===================== */}
+
           <div className="flex justify-between items-center mb-6 mt-10">
             <h2 className="text-3xl font-semibold text-indigo-900">Skills</h2>
             <Link to="/add-skill" className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
@@ -137,8 +154,9 @@ const About = () => {
           </div>
 
           {/* ===================== Training ===================== */}
+          
           <div className="flex justify-between items-center mb-6 mt-12">
-            <h2 className="text-3xl font-semibold text-indigo-900">Training / Experience</h2>
+            <h2 className="text-3xl font-semibold text-indigo-900">Experience</h2>
             <Link to="/add-training" className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
               + Add Experience
             </Link>
